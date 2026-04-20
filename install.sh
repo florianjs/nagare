@@ -83,7 +83,29 @@ else
   echo "  Browser will open for Convex login (if not already signed in)…"
   echo "  You'll be prompted for a project name."
   echo
-  npx convex dev --once --configure=new
+
+  # Convex statically validates `process.env.X` refs in auth.config.ts at push
+  # time. Before the project exists we cannot `convex env set`, so swap in a
+  # stub auth config for the initial provisioning push and restore after.
+  AUTH_CFG="convex/auth.config.ts"
+  AUTH_BAK=""
+  if [[ -f "$AUTH_CFG" ]] && grep -q 'CONVEX_AUTH_DOMAIN' "$AUTH_CFG"; then
+    AUTH_BAK="${AUTH_CFG}.bootstrap.bak"
+    cp "$AUTH_CFG" "$AUTH_BAK"
+    cat > "$AUTH_CFG" <<'STUB'
+// Temporary stub used only during install.sh provisioning. Restored before deploy.
+export default { providers: [] as Array<{ domain: string; applicationID: string }> }
+STUB
+  fi
+
+  PROVISION_STATUS=0
+  npx convex dev --once --configure=new || PROVISION_STATUS=$?
+
+  if [[ -n "$AUTH_BAK" ]]; then
+    mv "$AUTH_BAK" "$AUTH_CFG"
+  fi
+
+  [[ $PROVISION_STATUS -eq 0 ]] || fail "Convex provisioning failed."
   ok "Convex project ready"
 
   [[ -f .env.local ]] || fail ".env.local missing - Convex provisioning failed."

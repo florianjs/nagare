@@ -16,9 +16,7 @@
 // An empty domain disables auth (every getUserIdentity() returns null) so the
 // initial deploy does not crash, but all `/api/u/**` calls will 401 until the
 // second deploy lands.
-// Bracket access avoids Convex's static env-var check, which would otherwise
-// abort the first deploy (before install.sh can set CONVEX_AUTH_DOMAIN).
-const domain = (process.env as Record<string, string | undefined>)['CONVEX_AUTH_DOMAIN'] ?? ''
+const domain = process.env.CONVEX_AUTH_DOMAIN ?? ''
 
 export default {
   providers: domain
