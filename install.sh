@@ -103,7 +103,18 @@ if [[ -n "$EXISTING_APP_URL" ]]; then
   ok "CONVEX_AUTH_DOMAIN = $EXISTING_APP_URL"
 fi
 
-# ---------- 4b. Deploy Convex prod ----------
+# ---------- 4b. Seed CONVEX_AUTH_DOMAIN on prod (placeholder if unknown) ----------
+# Auth config reads this at deploy time; must exist before `convex deploy`.
+# Real worker URL is patched in step 12 after CF deploy.
+EXISTING_AUTH_DOMAIN=$(npx convex env get CONVEX_AUTH_DOMAIN --prod 2>/dev/null || true)
+if [[ -z "$EXISTING_AUTH_DOMAIN" ]]; then
+  step "Seeding CONVEX_AUTH_DOMAIN placeholder on Convex prod"
+  SEED_DOMAIN="${EXISTING_APP_URL:-http://localhost:3000}"
+  npx convex env set CONVEX_AUTH_DOMAIN "$SEED_DOMAIN" --prod >/dev/null
+  ok "CONVEX_AUTH_DOMAIN = $SEED_DOMAIN (temporary)"
+fi
+
+# ---------- 4c. Deploy Convex prod ----------
 step "Pushing Convex schema + functions to production"
 npx convex deploy --yes
 ok "Convex prod live"
