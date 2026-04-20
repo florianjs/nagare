@@ -206,37 +206,36 @@ npx wrangler whoami >/dev/null 2>&1 || {
 }
 ok "Cloudflare account linked"
 
-# ---------- 8. Push Convex URLs as CF secrets ----------
-step "Uploading Convex URLs as Cloudflare secrets"
 [[ -f wrangler.toml ]] || fail "wrangler.toml missing at repo root."
-printf '%s' "$CONVEX_URL" | npx wrangler secret put NUXT_CONVEX_URL
-ok "NUXT_CONVEX_URL secret set"
-printf '%s' "$CONVEX_SITE_URL" | npx wrangler secret put NUXT_PUBLIC_CONVEX_SITE_URL
-ok "NUXT_PUBLIC_CONVEX_SITE_URL secret set"
 
-# APP_URL: reuse existing from .env if known, else placeholder until post-deploy
-EXISTING_APP_URL=$(grep '^NUXT_PUBLIC_APP_URL=' .env 2>/dev/null | head -1 | cut -d= -f2- || true)
-if [[ -n "$EXISTING_APP_URL" ]]; then
-  printf '%s' "$EXISTING_APP_URL" | npx wrangler secret put NUXT_PUBLIC_APP_URL
-  ok "NUXT_PUBLIC_APP_URL secret set ($EXISTING_APP_URL)"
-fi
-
-# ---------- 9. Build ----------
+# ---------- 8. Build ----------
 step "Building Nuxt for cloudflare_module preset"
 NITRO_PRESET=cloudflare_module npm run build
 ok "build complete"
 
-# ---------- 10. Push secrets to CF ----------
+# ---------- 9. Deploy worker first (reconciles bindings per wrangler.toml) ----------
+# Running deploy before secret puts clears stale non-secret bindings left over
+# from earlier attempts, avoiding "Binding name already in use" on re-install.
+step "Deploying worker"
+DEPLOY_OUT=$(npx wrangler deploy 2>&1 | tee /dev/tty)
+WORKER_URL=$(echo "$DEPLOY_OUT" | grep -oE 'https://[^[:space:]]+\.workers\.dev' | head -1 || true)
+
+# ---------- 10. Push all secrets to CF ----------
 step "Uploading secrets to Cloudflare"
+printf '%s' "$CONVEX_URL" | npx wrangler secret put NUXT_CONVEX_URL
+ok "NUXT_CONVEX_URL secret set"
+printf '%s' "$CONVEX_SITE_URL" | npx wrangler secret put NUXT_PUBLIC_CONVEX_SITE_URL
+ok "NUXT_PUBLIC_CONVEX_SITE_URL secret set"
 printf '%s' "$SESSION_SECRET" | npx wrangler secret put NUXT_SESSION_PASSWORD
 ok "NUXT_SESSION_PASSWORD secret set"
 printf '%s' "$JWT_PRIVATE_KEY" | npx wrangler secret put NUXT_JWT_PRIVATE_KEY
 ok "NUXT_JWT_PRIVATE_KEY secret set"
 
-# ---------- 11. Deploy worker ----------
-step "Deploying worker"
-DEPLOY_OUT=$(npx wrangler deploy 2>&1 | tee /dev/tty)
-WORKER_URL=$(echo "$DEPLOY_OUT" | grep -oE 'https://[^[:space:]]+\.workers\.dev' | head -1 || true)
+EXISTING_APP_URL=$(grep '^NUXT_PUBLIC_APP_URL=' .env 2>/dev/null | head -1 | cut -d= -f2- || true)
+if [[ -n "$EXISTING_APP_URL" ]]; then
+  printf '%s' "$EXISTING_APP_URL" | npx wrangler secret put NUXT_PUBLIC_APP_URL
+  ok "NUXT_PUBLIC_APP_URL secret set ($EXISTING_APP_URL)"
+fi
 
 # ---------- 12. Set APP_URL secret if first deploy ----------
 if [[ -n "${WORKER_URL:-}" ]]; then
