@@ -11,7 +11,7 @@ Self-hosted, cookieless, GDPR-native analytics. Nuxt 4 frontend on Cloudflare Wo
 - **Node.js** ≥ 20 ([nodejs.org](https://nodejs.org))
 - **npm** (ships with Node)
 - **git**
-- A free **[Convex](https://convex.dev)** account - backend
+- A free **[Convex](https://convex.dev/referral/FLORIA4123)** account - backend (you need to create a Convex account)
 - A free **[Cloudflare](https://dash.cloudflare.com/sign-up)** account - frontend hosting
 
 Both accounts take two clicks to create; the install script opens the OAuth popups for you.
