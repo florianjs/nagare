@@ -247,20 +247,28 @@ if [[ -n "$EXISTING_APP_URL" ]]; then
   ok "NUXT_PUBLIC_APP_URL secret set ($EXISTING_APP_URL)"
 fi
 
-# ---------- 12. Set APP_URL secret if first deploy ----------
+# ---------- 12. Reconcile APP_URL + CONVEX_AUTH_DOMAIN ----------
+# Idempotent: re-running install.sh self-heals if Convex auth domain drifted
+# from the real Worker URL (common first-install failure mode -> /api/u/* 500).
 if [[ -n "${WORKER_URL:-}" ]]; then
   EXISTING_APP_URL=$(grep '^NUXT_PUBLIC_APP_URL=' .env 2>/dev/null | head -1 | cut -d= -f2- || true)
   if [[ -z "$EXISTING_APP_URL" ]]; then
     step "Setting NUXT_PUBLIC_APP_URL secret with deployed worker URL"
     printf '%s' "$WORKER_URL" | npx wrangler secret put NUXT_PUBLIC_APP_URL
     echo "NUXT_PUBLIC_APP_URL=$WORKER_URL" >> .env
-    npx wrangler deploy >/dev/null 2>&1
+    npx wrangler deploy
     ok "redeployed with APP_URL = $WORKER_URL"
+    EXISTING_APP_URL="$WORKER_URL"
+  fi
 
-    step "Setting CONVEX_AUTH_DOMAIN on Convex"
-    npx convex env set CONVEX_AUTH_DOMAIN "$WORKER_URL" --prod >/dev/null
-    npx convex deploy --yes >/dev/null
-    ok "Convex redeployed with auth domain = $WORKER_URL"
+  CURRENT_AUTH_DOMAIN=$(npx convex env get CONVEX_AUTH_DOMAIN --prod 2>/dev/null | tr -d '[:space:]' || true)
+  if [[ "$CURRENT_AUTH_DOMAIN" != "$EXISTING_APP_URL" ]]; then
+    step "Syncing CONVEX_AUTH_DOMAIN on Convex (was: '${CURRENT_AUTH_DOMAIN:-unset}')"
+    npx convex env set CONVEX_AUTH_DOMAIN "$EXISTING_APP_URL" --prod
+    npx convex deploy --yes
+    ok "Convex redeployed with auth domain = $EXISTING_APP_URL"
+  else
+    ok "CONVEX_AUTH_DOMAIN already = $EXISTING_APP_URL"
   fi
 fi
 
