@@ -1,0 +1,8 @@
+# Copy to .dev.vars (gitignored) for local `wrangler dev` runs.
+# For `npm run dev` (Nitro dev), use .env instead - this file is wrangler-only.
+
+NUXT_CONVEX_URL=https://your-convex-deployment.convex.cloud
+NUXT_PUBLIC_CONVEX_SITE_URL=https://your-convex-deployment.convex.site
+NUXT_SESSION_PASSWORD=replace-with-32-plus-char-random-string
+NUXT_AUTH_EMAIL=you@example.com
+NUXT_AUTH_PASSWORD=replace-with-random-password

@@ -1,0 +1,311 @@
+{
+  "nav": {
+    "tagline": "// analytics"
+  },
+  "locale": {
+    "switchTo": "Langue",
+    "en": "English",
+    "fr": "Français"
+  },
+  "setup": {
+    "section": "§ Configuration initiale",
+    "titleLine1": "Réclame",
+    "titleEm": "les clés.",
+    "body": "Cette instance nagare est neuve. Créez le compte opérateur - à partir d'ici, seuls cet email + mot de passe débloquent le dashboard.",
+    "bullet1": "· Aucune seconde chance - ce formulaire disparaît après création",
+    "bullet2": "· Mot de passe haché avec PBKDF2 (100k itérations, SHA-256)",
+    "bullet3": "· Stocké dans Convex, jamais dans les env vars ni les cookies",
+    "formLabel": "Opérateur",
+    "formTitle": "Enregistrer.",
+    "email": "Email",
+    "emailPh": "vous{'@'}exemple.com",
+    "password": "Mot de passe",
+    "passwordPh": "12 caractères minimum",
+    "confirm": "Confirmer le mot de passe",
+    "oneShot": "Formulaire unique",
+    "creating": "Création…",
+    "create": "Créer l'opérateur",
+    "mismatch": "Les mots de passe ne correspondent pas",
+    "tooShort": "Le mot de passe doit faire au moins 12 caractères",
+    "failed": "Configuration échouée",
+    "footerLeft": "Nagare · premier démarrage"
+  },
+  "login": {
+    "section": "§ Connexion",
+    "topDemo": "Voir la démo publique →",
+    "titleLine1": "Privé,",
+    "titleEm": "par défaut.",
+    "body": "Cette instance est verrouillée derrière une allowlist d'une personne. Seuls les identifiants de l'opérateur débloquent le dashboard - tout le reste est public ou démo.",
+    "bullets": [
+      "· Cookie de session, HTTP-only, SameSite=Lax",
+      "· Pas d'OAuth, pas de tokens tiers",
+      "· La déconnexion invalide la session côté serveur"
+    ],
+    "formLabel": "Identifiants",
+    "formTitle": "Entrer.",
+    "email": "Email",
+    "password": "Mot de passe",
+    "emailPh": "vous{'@'}exemple.com",
+    "passwordPh": "••••••••••••",
+    "submit": "Se connecter",
+    "submitting": "Vérification…",
+    "note": "Une tentative à la fois",
+    "error": "Identifiants invalides",
+    "errorPrefix": "✕ ",
+    "footerLeft": "Nagare · instance privée"
+  },
+  "dash": {
+    "nav": {
+      "sites": "Sites",
+      "views": "Vues",
+      "overview": "Aperçu",
+      "pages": "Pages",
+      "referrers": "Sources",
+      "countries": "Pays",
+      "devices": "Appareils",
+      "heatmap": "Heatmap",
+      "events": "Events",
+      "settings": "Paramètres",
+      "addSite": "+ Ajouter un site",
+      "noSites": "Aucun site.",
+      "createFirst": "Créer le premier site →"
+    },
+    "topbar": {
+      "live": "En direct",
+      "filter": "Filtrer",
+      "export": "Exporter",
+      "share": "Partager",
+      "last30": "30 derniers jours",
+      "privateInstance": "Instance privée",
+      "signOut": "Se déconnecter →"
+    },
+    "common": {
+      "loading": "Chargement…",
+      "noData": "Pas encore de données.",
+      "emptyDefault": "Collez le snippet tracker dans votre site, les events arrivent ici en quelques secondes.",
+      "online": "en ligne",
+      "visitorsOnline": "{n} visiteurs en ligne",
+      "vsPrev": "vs préc.",
+      "distinct": "{n} chemins distincts"
+    },
+    "stats": {
+      "pageviews": "Pages vues",
+      "visitors": "Visiteurs uniques",
+      "bounce": "Taux de rebond",
+      "duration": "Durée moyenne",
+      "visitorsShort": "Visiteurs"
+    },
+    "table": {
+      "time": "Heure",
+      "type": "Type",
+      "path": "Chemin",
+      "country": "Pays",
+      "referrer": "Source",
+      "event": "Event",
+      "count": "Nombre",
+      "users": "Utilisateurs uniques",
+      "lastSeen": "Dernière vue",
+      "views": "Vues",
+      "visitors": "Visiteurs",
+      "bounce": "Rebond",
+      "duration": "Durée",
+      "sessions": "Sessions",
+      "conv": "Conv.",
+      "source": "Source",
+      "channel": "Canal",
+      "resolution": "Résolution",
+      "device": "Appareil",
+      "share": "Part"
+    },
+    "overview": {
+      "section": "Aperçu",
+      "topPages": "Pages populaires",
+      "topReferrers": "Sources populaires",
+      "topCountries": "Pays populaires",
+      "liveEvents": "Events en direct",
+      "refreshes": "rafraîchi toutes les 10s",
+      "recent": "{n} récents",
+      "noEventsYet": "Pas encore d'events. Collez le snippet dans votre site pour les voir arriver.",
+      "visitors30d": "Visiteurs, 30 jours",
+      "liveVisitors": "Visiteurs en direct",
+      "last30min": "30 dernières min"
+    },
+    "pages": {
+      "section": "Pages",
+      "sort": "Tri",
+      "filterPh": "Filtrer les chemins…",
+      "sortViews": "vues",
+      "sortVisitors": "visiteurs",
+      "sortBounce": "rebond",
+      "sortDuration": "durée"
+    },
+    "referrers": {
+      "section": "Sources",
+      "sources": "sources",
+      "channel": "Répartition par canal",
+      "allSources": "Toutes les sources",
+      "visitors": "{n} visiteurs",
+      "filter": {
+        "all": "Tous",
+        "direct": "Direct",
+        "search": "Recherche",
+        "social": "Social",
+        "referral": "Référent"
+      }
+    },
+    "countries": {
+      "section": "Pays",
+      "countries": "pays",
+      "topCountries": "Pays principaux"
+    },
+    "devices": {
+      "section": "Appareils",
+      "deviceType": "Type d'appareil",
+      "browser": "Navigateur",
+      "splits": "{n} parts",
+      "splitTitle": "Répartition clients"
+    },
+    "events": {
+      "section": "Events",
+      "definitions": "Définitions d'events",
+      "liveFeed": "Flux en direct",
+      "clickToFilter": "Cliquez une ligne pour filtrer le flux",
+      "noNamedYet": "Aucun event nommé. Déclenchez-en un avec",
+      "noInFilter": "Aucun event dans le filtre actuel.",
+      "fireHint": "Déclenchez des events avec window.nagare.event('name') depuis votre site.",
+      "eventDefsCount": "{n} définitions d'events · {range}",
+      "clearFilter": "effacer"
+    },
+    "heatmap": {
+      "section": "Heatmap",
+      "title": "Heatmap",
+      "mode": "Mode",
+      "page": "Page",
+      "legendLow": "Faible",
+      "legendHigh": "Fort",
+      "modes": {
+        "clicks": "Clics",
+        "scroll": "Scroll",
+        "move": "Mouvement"
+      },
+      "modeDescs": {
+        "clicks": "Où les visiteurs cliquent",
+        "scroll": "Profondeur atteinte, % d'utilisateurs",
+        "move": "Densité de trajectoire souris"
+      },
+      "loadingFrame": "Chargement du cadre…",
+      "escClose": "Échap ou cliquez en dehors pour fermer",
+      "lastUpdated": "Mis à jour 14:23",
+      "enlarge": "Agrandir",
+      "openFullMap": "Ouvrir la carte complète →",
+      "clicksAgg": "{n} clics agrégés",
+      "clusters": "{n} clusters · {clicks} clics",
+      "samples": "{n} échantillons",
+      "depthBands": "{n} bandes",
+      "iframeNote": "L'iframe pointe sur {url} - votre site doit autoriser l'embedding (pas de X-Frame-Options deny).",
+      "emptyMsg": "Pas encore de données heatmap. Activez data-track-moves et data-track-scroll sur le script pour collecter plus de signaux.",
+      "pointsOnPath": "{n} points {mode} sur {path}"
+    },
+    "ranges": {
+      "24h": "24h",
+      "7d": "7j",
+      "30d": "30j",
+      "90d": "90j",
+      "all": "Tout"
+    }
+  },
+  "u": {
+    "session": {
+      "live": "En direct",
+      "privateInstance": "Instance privée",
+      "signOut": "Se déconnecter →"
+    },
+    "sidebar": {
+      "liveSuffix": "live",
+      "noSites": "Aucun site.",
+      "createFirst": "Créer le premier site →"
+    },
+    "onboard": {
+      "section": "Aperçu",
+      "title": "Commencer à tracker.",
+      "subtitle": "Aucun site. Enregistrez le premier pour obtenir un snippet tracker.",
+      "noSites": "Aucun site.",
+      "paste": "Chaque site dispose d'une clé de script unique. Collez le snippet dans votre {head}, les events commencent à arriver immédiatement - sans cookies, RGPD-natif.",
+      "registerFirst": "Enregistrer le premier site",
+      "installMsg": "Votre clé de site est",
+      "showSnippet": "Afficher le snippet →",
+      "noEventsHeader": "§ Pas encore d'events",
+      "installTitle": "Installer le tracker."
+    },
+    "newSite": {
+      "section": "Nouveau site",
+      "title": "Enregistrer.",
+      "subtitle": "Donnez un domaine au site. Une clé de script est générée automatiquement.",
+      "domain": "Domaine",
+      "domainPh": "acme.com",
+      "domainHint": "Pas de préfixe http://. Juste le hostname.",
+      "name": "Nom d'affichage (optionnel)",
+      "namePh": "Acme storefront",
+      "cancel": "← Annuler",
+      "creating": "Création…",
+      "create": "Créer le site",
+      "domainRequired": "Domaine requis",
+      "failed": "Échec de création du site"
+    },
+    "install": {
+      "section": "Installer",
+      "siteIdLabel": "Site ID {id} · Clé {key}…",
+      "openDash": "Ouvrir le dashboard",
+      "loadingSite": "Chargement du site…",
+      "snippetNote": "index.html - collez dans {tag}",
+      "copied": "✓ Copié",
+      "copy": "Copier",
+      "addTracker": "Ajouter le tracker",
+      "addTrackerDesc": "Choisissez votre framework ci-dessous. Le snippet est pré-rempli avec votre clé de site et endpoint d'ingestion. Copier, coller, déployer.",
+      "spaTitle": "Routing SPA",
+      "spaSubtitle": "Déjà géré.",
+      "spaBody": "Le tracker hook pushState, popstate et hashchange automatiquement. Aucun code supplémentaire - les changements de route émettent une page vue sans rechargement.",
+      "spaNote": "history.pushState → page vue émise automatiquement (Nuxt, Next, React Router, SvelteKit, Vue Router).",
+      "eventsTitle": "Events personnalisés",
+      "eventsSubtitle": "Trackez ce qui compte.",
+      "eventsBody": "Appelez window.nagare.event(name) depuis n'importe où dans votre code. Les events apparaissent dans l'onglet Events et sont filtrables en direct.",
+      "eventsTrackClick": "Tracker un clic CTA",
+      "eventsTrackPurchase": "Tracker un achat",
+      "heatmapTitle": "Tracking heatmap",
+      "heatmapSubtitle": "Attributs opt-in.",
+      "heatmapBody": "Les positions de clic sont trackées par défaut. Pour aussi tracker le mouvement souris et la profondeur de scroll, ajoutez les attributs ci-dessous.",
+      "verifySection": "§ Vérifier",
+      "verifyTitle": "Déclencher une page vue.",
+      "step1": "Collez le snippet dans le",
+      "step1Tail": "de votre site.",
+      "step2": "Ouvrez le site. Le tracker se déclenche immédiatement au chargement.",
+      "step3": "Allez sur",
+      "step3Link": "le dashboard",
+      "step3Tail": "- les events arrivent en quelques secondes.",
+      "dangerSection": "§ Zone dangereuse",
+      "rotateTitle": "Régénérer la clé",
+      "rotateDesc": "Invalide la clé actuelle. Toute page utilisant encore l'ancien snippet cesse de reporter.",
+      "rotate": "Régénérer",
+      "rotateConfirm": "Régénérer la clé de script ? L'ancienne cesse de fonctionner immédiatement.",
+      "embedTitle": "Embedding heatmap",
+      "embedDesc": "La heatmap charge votre site dans une iframe. La plupart des serveurs bloquent cela par défaut (X-Frame-Options). Ajoutez le header ci-dessous pour autoriser {origin} à embarquer votre site."
+    },
+    "settings": {
+      "section": "Paramètres",
+      "title": "Configurer.",
+      "siteInfo": "Infos du site",
+      "domain": "Domaine",
+      "scriptKey": "Clé de script",
+      "created": "Créé le",
+      "trackerSection": "Snippet tracker",
+      "trackerDesc": "Copiez le snippet ci-dessous et collez-le dans votre site. Choisissez l'onglet de votre framework.",
+      "dangerZone": "Zone dangereuse",
+      "deleteTitle": "Supprimer ce site",
+      "deleteDesc": "Supprime définitivement ce site et tous ses events, données heatmap et agrégats. Irréversible.",
+      "deleteBtn": "Supprimer le site",
+      "deleteConfirm": "Tapez le domaine pour confirmer la suppression :",
+      "deleteMismatch": "Le domaine ne correspond pas. Suppression annulée.",
+      "copyKey": "Cliquer pour copier"
+    }
+  }
+}

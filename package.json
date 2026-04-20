@@ -1,0 +1,56 @@
+{
+  "name": "nagare",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "nuxt build",
+    "build:cf": "NITRO_PRESET=cloudflare_module nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "preview:cf": "npm run build:cf && wrangler dev",
+    "deploy": "npm run build:cf && wrangler deploy",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "nuxt typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm run lint && npm run test",
+    "postinstall": "nuxt prepare",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxt/icon": "^2.2.1",
+    "@nuxtjs/i18n": "^10.2.4",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@pinia/nuxt": "^0.11.3",
+    "chart.js": "^4.5.1",
+    "convex": "^1.35.1",
+    "heatmap.js": "^2.0.5",
+    "jose": "^6.2.2",
+    "nuxt": "^4.4.2",
+    "nuxt-auth-utils": "^0.5.29",
+    "pinia": "^3.0.4",
+    "vue": "^3.5.32",
+    "vue-chartjs": "^5.3.3",
+    "vue-router": "^5.0.4"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "@nuxt/test-utils": "^4.0.2",
+    "eslint": "^9.39.4",
+    "happy-dom": "^20.9.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "vitest": "^4.1.4",
+    "wrangler": "^4.83.0"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": [
+      "eslint --fix",
+      "bash -c 'npx nuxt typecheck'"
+    ]
+  }
+}

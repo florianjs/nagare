@@ -1,0 +1,40 @@
+#:schema node_modules/wrangler/config-schema.json
+#
+# Cloudflare Workers deploy config.
+#
+# Build first: NITRO_PRESET=cloudflare_module npm run build
+# Deploy:      npx wrangler deploy
+#
+# Required SECRETS (set via `npx wrangler secret put <NAME>`):
+#   NUXT_SESSION_PASSWORD   - 32+ char random, used by nuxt-auth-utils
+#   NUXT_AUTH_EMAIL         - operator email (argaudflorian@gmail.com)
+#   NUXT_AUTH_PASSWORD      - operator password
+#
+# Public vars below ([vars]) get baked in at build time or set at runtime.
+# The CONVEX_URL you set at build time gets baked into runtimeConfig.convexUrl.
+# Anything in [vars] below overrides at runtime via Nuxt env auto-mapping
+# (NUXT_* → runtimeConfig.*, NUXT_PUBLIC_* → runtimeConfig.public.*).
+
+name = "graph-analytics"
+main = "./.output/server/index.mjs"
+compatibility_date = "2026-04-15"
+compatibility_flags = ["nodejs_compat"]
+
+# Static assets: Nuxt/Nitro places public/ + _nuxt/ in .output/public/
+[assets]
+directory = "./.output/public/"
+binding = "ASSETS"
+
+[observability]
+enabled = true
+
+# Runtime env vars injected via `wrangler secret put` by install.sh:
+#   NUXT_CONVEX_URL, NUXT_PUBLIC_CONVEX_SITE_URL, NUXT_PUBLIC_APP_URL
+# Kept out of this file so the repo can be public without leaking deployment URLs.
+
+# Optional: production / staging environments
+# [env.production]
+# name = "graph-analytics"
+# routes = [
+#   { pattern = "graph.yourdomain.com", custom_domain = true }
+# ]

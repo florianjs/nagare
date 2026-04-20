@@ -1,0 +1,311 @@
+{
+  "nav": {
+    "tagline": "// analytics"
+  },
+  "locale": {
+    "switchTo": "Language",
+    "en": "English",
+    "fr": "Français"
+  },
+  "setup": {
+    "section": "§ First-run setup",
+    "titleLine1": "Claim",
+    "titleEm": "the keys.",
+    "body": "This is a fresh nagare instance. Create the operator account - from this point on, only this email + password can unlock the live dashboard.",
+    "bullet1": "· No second chance - this form disappears after creation",
+    "bullet2": "· Password hashed with PBKDF2 (100k iters, SHA-256)",
+    "bullet3": "· Stored in Convex, never in env vars or cookies",
+    "formLabel": "Operator",
+    "formTitle": "Register.",
+    "email": "Email",
+    "emailPh": "you{'@'}example.com",
+    "password": "Password",
+    "passwordPh": "12 characters minimum",
+    "confirm": "Confirm password",
+    "oneShot": "One-shot form",
+    "creating": "Creating…",
+    "create": "Create operator",
+    "mismatch": "Passwords don't match",
+    "tooShort": "Password must be at least 12 characters",
+    "failed": "Setup failed",
+    "footerLeft": "Nagare · first boot"
+  },
+  "login": {
+    "section": "§ Sign in",
+    "topDemo": "View public demo →",
+    "titleLine1": "Private,",
+    "titleEm": "by default.",
+    "body": "This instance is gated behind an allowlist of one. Only the operator's credentials unlock the live dashboard - everything else is public or demo.",
+    "bullets": [
+      "· Session cookie, HTTP-only, SameSite=Lax",
+      "· No OAuth, no third-party tokens",
+      "· Logout wipes the session server-side"
+    ],
+    "formLabel": "Credentials",
+    "formTitle": "Enter.",
+    "email": "Email",
+    "password": "Password",
+    "emailPh": "you{'@'}example.com",
+    "passwordPh": "••••••••••••",
+    "submit": "Sign in",
+    "submitting": "Checking…",
+    "note": "One attempt at a time",
+    "error": "Invalid credentials",
+    "errorPrefix": "✕ ",
+    "footerLeft": "Nagare · private instance"
+  },
+  "dash": {
+    "nav": {
+      "sites": "Sites",
+      "views": "Views",
+      "overview": "Overview",
+      "pages": "Pages",
+      "referrers": "Referrers",
+      "countries": "Countries",
+      "devices": "Devices",
+      "heatmap": "Heatmap",
+      "events": "Events",
+      "settings": "Settings",
+      "addSite": "+ Add a site",
+      "noSites": "No sites yet.",
+      "createFirst": "Create first site →"
+    },
+    "topbar": {
+      "live": "Live",
+      "filter": "Filter",
+      "export": "Export",
+      "share": "Share",
+      "last30": "Last 30 days",
+      "privateInstance": "Private instance",
+      "signOut": "Sign out →"
+    },
+    "common": {
+      "loading": "Loading…",
+      "noData": "No data yet.",
+      "emptyDefault": "Paste the tracker snippet into your site and events will start flowing here within seconds.",
+      "online": "online",
+      "visitorsOnline": "{n} visitors online",
+      "vsPrev": "vs prev",
+      "distinct": "{n} distinct paths"
+    },
+    "stats": {
+      "pageviews": "Pageviews",
+      "visitors": "Unique visitors",
+      "bounce": "Bounce rate",
+      "duration": "Avg. duration",
+      "visitorsShort": "Visitors"
+    },
+    "table": {
+      "time": "Time",
+      "type": "Type",
+      "path": "Path",
+      "country": "Country",
+      "referrer": "Referrer",
+      "event": "Event",
+      "count": "Count",
+      "users": "Unique users",
+      "lastSeen": "Last seen",
+      "views": "Views",
+      "visitors": "Visitors",
+      "bounce": "Bounce",
+      "duration": "Duration",
+      "sessions": "Sessions",
+      "conv": "Conv.",
+      "source": "Source",
+      "channel": "Channel",
+      "resolution": "Resolution",
+      "device": "Device",
+      "share": "Share"
+    },
+    "overview": {
+      "section": "Overview",
+      "topPages": "Top pages",
+      "topReferrers": "Top referrers",
+      "topCountries": "Top countries",
+      "liveEvents": "Live events",
+      "refreshes": "refreshes every 10s",
+      "recent": "{n} recent",
+      "noEventsYet": "No events yet. Paste the snippet into your site to see them flow in.",
+      "visitors30d": "Visitors, 30 days",
+      "liveVisitors": "Live visitors",
+      "last30min": "last 30 min"
+    },
+    "pages": {
+      "section": "Pages",
+      "sort": "Sort",
+      "filterPh": "Filter paths…",
+      "sortViews": "views",
+      "sortVisitors": "visitors",
+      "sortBounce": "bounce",
+      "sortDuration": "duration"
+    },
+    "referrers": {
+      "section": "Referrers",
+      "sources": "sources",
+      "channel": "Channel breakdown",
+      "allSources": "All sources",
+      "visitors": "{n} visitors",
+      "filter": {
+        "all": "All",
+        "direct": "Direct",
+        "search": "Search",
+        "social": "Social",
+        "referral": "Referral"
+      }
+    },
+    "countries": {
+      "section": "Countries",
+      "countries": "countries",
+      "topCountries": "Top countries"
+    },
+    "devices": {
+      "section": "Devices",
+      "deviceType": "Device type",
+      "browser": "Browser",
+      "splits": "{n} splits",
+      "splitTitle": "Client split"
+    },
+    "events": {
+      "section": "Events",
+      "definitions": "Event definitions",
+      "liveFeed": "Live feed",
+      "clickToFilter": "Click a row to filter the live feed",
+      "noNamedYet": "No named events yet. Fire one with",
+      "noInFilter": "No events in current filter.",
+      "fireHint": "Fire custom events with window.nagare.event('name') from your site.",
+      "eventDefsCount": "{n} event definitions · {range}",
+      "clearFilter": "clear"
+    },
+    "heatmap": {
+      "section": "Heatmap",
+      "title": "Heatmap",
+      "mode": "Mode",
+      "page": "Page",
+      "legendLow": "Low",
+      "legendHigh": "High",
+      "modes": {
+        "clicks": "Clicks",
+        "scroll": "Scroll",
+        "move": "Move"
+      },
+      "modeDescs": {
+        "clicks": "Where visitors tap",
+        "scroll": "Depth reached, % of users",
+        "move": "Mouse trajectory density"
+      },
+      "loadingFrame": "Loading frame…",
+      "escClose": "Esc or click outside to close",
+      "lastUpdated": "Last updated 14:23",
+      "enlarge": "Enlarge",
+      "openFullMap": "Open full map →",
+      "clicksAgg": "{n} clicks aggregated",
+      "clusters": "{n} clusters · {clicks} clicks",
+      "samples": "{n} move samples",
+      "depthBands": "{n} depth bands",
+      "iframeNote": "Iframe points at {url} - your site must allow embedding (no X-Frame-Options deny).",
+      "emptyMsg": "No heatmap data yet. Enable data-track-moves and data-track-scroll on the tracker script to collect more signals.",
+      "pointsOnPath": "{n} {mode} points on {path}"
+    },
+    "ranges": {
+      "24h": "24h",
+      "7d": "7d",
+      "30d": "30d",
+      "90d": "90d",
+      "all": "All"
+    }
+  },
+  "u": {
+    "session": {
+      "live": "Live",
+      "privateInstance": "Private instance",
+      "signOut": "Sign out →"
+    },
+    "sidebar": {
+      "liveSuffix": "live",
+      "noSites": "No sites yet.",
+      "createFirst": "Create first site →"
+    },
+    "onboard": {
+      "section": "Overview",
+      "title": "Start tracking.",
+      "subtitle": "No sites yet. Register your first one to get a tracker snippet.",
+      "noSites": "No sites.",
+      "paste": "Each site ships with a unique script key. Paste the snippet into your {head} and events start flowing immediately - cookieless, GDPR-native.",
+      "registerFirst": "Register first site",
+      "installMsg": "Your site key is",
+      "showSnippet": "Show install snippet →",
+      "noEventsHeader": "§ No events yet",
+      "installTitle": "Install the tracker."
+    },
+    "newSite": {
+      "section": "New site",
+      "title": "Register.",
+      "subtitle": "Give the site a domain. A script key is generated automatically.",
+      "domain": "Domain",
+      "domainPh": "acme.com",
+      "domainHint": "No http:// prefix. Just the hostname.",
+      "name": "Display name (optional)",
+      "namePh": "Acme storefront",
+      "cancel": "← Cancel",
+      "creating": "Creating…",
+      "create": "Create site",
+      "domainRequired": "Domain required",
+      "failed": "Failed to create site"
+    },
+    "install": {
+      "section": "Install",
+      "siteIdLabel": "Site ID {id} · Key {key}…",
+      "openDash": "Open dashboard",
+      "loadingSite": "Loading site…",
+      "snippetNote": "index.html - paste into {tag}",
+      "copied": "✓ Copied",
+      "copy": "Copy",
+      "addTracker": "Add the tracker",
+      "addTrackerDesc": "Pick your framework below. The snippet is pre-filled with your site key and ingest endpoint. Just copy, paste, deploy.",
+      "spaTitle": "SPA routing",
+      "spaSubtitle": "Already handled.",
+      "spaBody": "The tracker hooks into pushState, popstate and hashchange automatically. No extra code needed - route changes fire a pageview without full-page reload.",
+      "spaNote": "history.pushState → pageview fires automatically (Nuxt, Next, React Router, SvelteKit, Vue Router).",
+      "eventsTitle": "Custom events",
+      "eventsSubtitle": "Track what matters.",
+      "eventsBody": "Call window.nagare.event(name) from anywhere in your code. Events show up in the Events tab and can be filtered live.",
+      "eventsTrackClick": "Track a CTA click",
+      "eventsTrackPurchase": "Track a purchase",
+      "heatmapTitle": "Heatmap tracking",
+      "heatmapSubtitle": "Opt-in attributes.",
+      "heatmapBody": "Click positions are tracked by default. To also track mouse movement and scroll depth, add the data attributes below.",
+      "verifySection": "§ Verify",
+      "verifyTitle": "Trigger a pageview.",
+      "step1": "Paste the snippet into the",
+      "step1Tail": "of your site.",
+      "step2": "Open the site. The tracker fires immediately on load.",
+      "step3": "Head to",
+      "step3Link": "the dashboard",
+      "step3Tail": "- events stream in within seconds.",
+      "dangerSection": "§ Danger zone",
+      "rotateTitle": "Rotate script key",
+      "rotateDesc": "Invalidates the current key. Any page still using the old snippet stops reporting.",
+      "rotate": "Rotate key",
+      "rotateConfirm": "Rotate script key? The old one stops working immediately.",
+      "embedTitle": "Heatmap embedding",
+      "embedDesc": "The heatmap loads your site in an iframe. Most servers block this by default (X-Frame-Options). Add the header below to allow {origin} to embed your site."
+    },
+    "settings": {
+      "section": "Settings",
+      "title": "Configure.",
+      "siteInfo": "Site info",
+      "domain": "Domain",
+      "scriptKey": "Script key",
+      "created": "Created",
+      "trackerSection": "Tracker snippet",
+      "trackerDesc": "Copy the snippet below and paste it into your site. Pick your framework tab.",
+      "dangerZone": "Danger zone",
+      "deleteTitle": "Delete this site",
+      "deleteDesc": "Permanently removes this site and all its events, heatmap data, and rollups. This cannot be undone.",
+      "deleteBtn": "Delete site",
+      "deleteConfirm": "Type the domain to confirm deletion:",
+      "deleteMismatch": "Domain doesn't match. Deletion cancelled.",
+      "copyKey": "Click to copy"
+    }
+  }
+}
