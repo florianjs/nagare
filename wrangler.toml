@@ -15,7 +15,7 @@
 # Anything in [vars] below overrides at runtime via Nuxt env auto-mapping
 # (NUXT_* → runtimeConfig.*, NUXT_PUBLIC_* → runtimeConfig.public.*).
 
-name = "graph-analytics"
+name = "nagare-analytics"
 main = "./.output/server/index.mjs"
 compatibility_date = "2026-04-15"
 compatibility_flags = ["nodejs_compat"]
@@ -34,7 +34,7 @@ enabled = true
 
 # Optional: production / staging environments
 # [env.production]
-# name = "graph-analytics"
+# name = "nagare-analytics"
 # routes = [
 #   { pattern = "graph.yourdomain.com", custom_domain = true }
 # ]

@@ -198,6 +198,16 @@ EXISTING_APP_URL=$(grep '^NUXT_PUBLIC_APP_URL=' .env 2>/dev/null | head -1 | cut
 mv .env.new .env
 ok ".env written (existing values preserved)"
 
+# ---------- 6b. Randomize worker name on first run ----------
+# Each fresh clone gets a unique `nagare-analytics-XXXX` name so parallel
+# installs on the same Cloudflare account don't collide on the default slug.
+if grep -q '^name = "nagare-analytics"$' wrangler.toml; then
+  WORKER_SUFFIX=$(openssl rand -hex 2)
+  step "Randomizing worker name"
+  sed_i "s/^name = \"nagare-analytics\"$/name = \"nagare-analytics-${WORKER_SUFFIX}\"/" wrangler.toml
+  ok "worker name = nagare-analytics-${WORKER_SUFFIX}"
+fi
+
 # ---------- 7. Cloudflare login ----------
 step "Signing in to Cloudflare"
 npx wrangler whoami >/dev/null 2>&1 || {
